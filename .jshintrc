@@ -15,7 +15,7 @@
   "strict": false,
   "smarttabs": true,
   "expr": true,
-
+  "nonbsp": true,
 
   "evil": true,
   "browser": true,
