@@ -238,4 +238,5 @@ We also like:
 - [Owl Carousel](http://www.owlcarousel.owlgraphic.com/) for responsive sliders and carousels.
 - [MomentJS](http://momentjs.com/) to handle dates.
 - [TweenMax](http://greensock.com/tweenmax) to handle js animations.
+- [Typeahead.js](https://github.com/twitter/typeahead.js) for autocomplete and suggestion engines.
 
