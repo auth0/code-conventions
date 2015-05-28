@@ -121,7 +121,7 @@ Avoid arbitrary colors and [magic numbers](https://css-tricks.com/magic-numbers-
 - Avoid selectors tightly coupled to the dom. Use only classes and no element tags. This keeps your components element flexible.
 - Avoid nesting. Try to keep the cascade to a maximum of 3 elements. Use prefixes to avoid unnecessary nesting.
 - When keeping CSS in different files, organize them by components rather than pages. 
-- Make sure that visible DOM elements have events (`click`, `input`, etc.) before displaying them. If page loading takes a while and an user clicks a button or link that has not logic on it can break the page or force the user to click on them again leading to unexpected behavior. Moreover, functional tests have a greater chance of failing. Example:
+- Only show visual components when they have the required events or behaviors attached to them. Failing to do so may cause the page to break or functional tests to fail. Example:
  
   ```js
     // dialog contains a confirm button with class .confirm
