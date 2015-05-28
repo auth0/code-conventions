@@ -121,6 +121,39 @@ Avoid arbitrary colors and [magic numbers](https://css-tricks.com/magic-numbers-
 - Avoid selectors tightly coupled to the dom. Use only classes and no element tags. This keeps your components element flexible.
 - Avoid nesting. Try to keep the cascade to a maximum of 3 elements. Use prefixes to avoid unnecessary nesting.
 - When keeping CSS in different files, organize them by components rather than pages. 
+- Only show visual components when they have the required events or behaviors attached to them. Failing to do so may cause the page to break or functional tests to fail. Example:
+ 
+  ```js
+    // dialog contains a confirm button with class .confirm
+    var dialog = $(...);
+    
+    dialog.show();
+
+    // WRONG: Event is defined **after** show has been called.    
+    // There could be a noticeable delay between dialog showing
+    // and event binding.
+    $('.confirm', dialog).click(function () {
+      // Do logic here
+    });
+  ```
+  
+  The right way would be doing:
+  
+  ```js
+    // dialog contains a confirm button with class .confirm
+    var dialog = $(...);
+  
+    // RIGHT: Event is defined **before** show has been called.    
+    $('.confirm', dialog).click(function () {
+      // Do logic here
+    });
+    
+    dialog.show();
+  ```  
+  
+  
+  
+  
 
 **Breakpoints**
 - Mobile `(min-width: 320px)`
