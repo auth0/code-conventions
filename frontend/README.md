@@ -121,6 +121,39 @@ Avoid arbitrary colors and [magic numbers](https://css-tricks.com/magic-numbers-
 - Avoid selectors tightly coupled to the dom. Use only classes and no element tags. This keeps your components element flexible.
 - Avoid nesting. Try to keep the cascade to a maximum of 3 elements. Use prefixes to avoid unnecessary nesting.
 - When keeping CSS in different files, organize them by components rather than pages. 
+- Make sure that visible DOM elements have events (`click`, `input`, etc.) before displaying them. If page loading takes a while and an user clicks a button or link that has not logic on it can break the page or force the user to click on them again leading to unexpected behavior. Moreover, functional tests have a greater chance of failing. Example:
+ 
+  ```js
+    // dialog contains a confirm button with class .confirm
+    var dialog = $(...);
+    
+    dialog.show();
+
+    // WRONG: Event is defined **after** show has been called.    
+    // There could be a noticeable delay between dialog showing
+    // and event binding.
+    $('.confirm', dialog).click(function () {
+      // Do logic here
+    });
+  ```
+  
+  The right way would be doing:
+  
+  ```js
+    // dialog contains a confirm button with class .confirm
+    var dialog = $(...);
+  
+    // RIGHT: Event is defined **before** show has been called.    
+    $('.confirm', dialog).click(function () {
+      // Do logic here
+    });
+    
+    dialog.show();
+  ```  
+  
+  
+  
+  
 
 **Breakpoints**
 - Mobile `(min-width: 320px)`
