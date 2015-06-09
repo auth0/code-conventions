@@ -81,7 +81,7 @@ Avoid animating properties other than `opacity` or `transform` as these perform 
   transform: translateY(0px);
 }
 
-.cabinet.open {
+.cabinet.is-open {
   margin-top: 20px;
   transform: translateY(20px);
 }
