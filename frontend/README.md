@@ -160,7 +160,7 @@ Avoid arbitrary colors and [magic numbers](https://css-tricks.com/magic-numbers-
 - Mobile landscape `(min-width: 568px)`
 - Tablet `(min-width: 768px)`
 - Desktop `(min-width: 992px)`
-- Desktop HD `(min-width: 1400px)` 
+- Desktop HD `(min-width: 1200px)` 
 
 Use our [breakpoint mixin](https://github.com/auth0/styleguide/blob/master/lib/mixins/index.styl#L11) to declare your media queries. It helps keep code clear and media queries consistent.
 
